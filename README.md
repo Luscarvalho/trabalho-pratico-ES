@@ -27,7 +27,7 @@ phpMyAdmin | 4.9.0.1
 <br><br>
 
 ## Proposta do sistema:
-O sistema tem como finalidade implementar um simulador de batalhas Pokémon. Para isso os treinadores deverão estar cadastrado dentro do banco de dados do sitema, juntamente com os pokémon. As simulação são feitas apartir de calculos, levando em conta o nível do treinador e o tipo do pokémon.
+O sistema tem como finalidade implementar um simulador de batalhas Pokémon. Para isso os treinadores deverão estar cadastrado dentro do banco de dados do sitema, juntamente com os pokémon. As simulações são feitas apartir de calculos, levando em conta o nível do treinador e o tipo do pokémon.
 
 ### Tabelas:
 Treinador <br>
