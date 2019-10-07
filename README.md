@@ -15,6 +15,8 @@ Tecnologia     |     Versão
 ---------------|:-------------:
 Windows 10 | 10/2019
 Visual Estudio Code | 1.38
+HTML | 5
+CSS | 4
 XAMPP | 7.3.9
 Apache | 2.4.41
 PHP | 7.3.9
