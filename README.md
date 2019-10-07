@@ -15,6 +15,7 @@ Tecnologia     |     Versão
 ---------------|:-------------:
 Windows 10 | 10/2019
 Visual Estudio Code | 1.38
+MySQL Workbench | 6.1
 HTML | 5
 CSS | 4
 XAMPP | 7.3.9
