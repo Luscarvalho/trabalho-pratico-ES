@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+    <!--Icones-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Materialize CSS-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection">
+    </head>
+
+    <body style="background-image: url(imagens/fundo-login.jpg); background-size: cover;">
+        
+        <div class="valign-wrapper row" style="position: relative; min-height: 100vh;">
+            <div class="card z-depth-3 container col s4 pull-s4">
+                
+                <div class="input-field col s12">
+                    <blockquote>
+                        <h3 class="light">POKÉMON</h3>
+                    </blockquote>
+                </div>
+                
+                <form method="POST" action="validacao.php" autocomplete="off" style="margin-bottom: 20px;">
+                
+                <!-- Lista de Pokemon -->
+                    <datalist id="pokemon">
+                        <option>Bulbasaur</option>
+                        <option>Ivysaur</option>
+                        <option>Venusaur</option>
+                        <option>Charmander</option>
+                        <option>Charmeleon</option>
+                        <option>Charizard </option>
+                    </datalist>
+                    
+                <!-- POKEMON 1 -->
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">looks_one</i>
+                        <input id="pokemon1" type="text" list="pokemon" name="cPokemon1">
+                        <label for="pokemon1">Pokémon 1</label>
+                    </div>
+                    
+                <!-- POKEMON 2 -->
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">looks_two</i>
+                        <input id="pokemon2" type="text" list="pokemon" name="cPokemon2">
+                        <label for="pokemon2">Pokémon 2</label>
+                    </div>
+                    
+                <!-- POKEMON 3 -->
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">looks_3</i>
+                        <input id="pokemon3" type="text" list="pokemon" name="cPokemon3">
+                        <label for="pokemon3">Pokémon 3</label>
+                    </div>
+                    
+                <!-- POKEMON 4 -->
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">looks_4</i>
+                        <input id="pokemon4" type="text" list="pokemon" name="cPokemon4">
+                        <label for="pokemon4">Pokémon 4</label>
+                    </div>
+                    
+                <!-- POKEMON 5 -->
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">looks_5</i>
+                        <input id="pokemon5" type="text" list="pokemon" name="cPokemon5">
+                        <label for="pokemon5">Pokémon 5</label>
+                    </div>
+                    
+                <!-- POKEMON 6 -->
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">looks_6</i>
+                        <input id="pokemon6" type="text" list="pokemon" name="cPokemon6">
+                        <label for="pokemon1">Pokémon 6</label>
+                    </div>
+                    
+                    <button type="submit" class="btn red">CONFIRMAR</button>
+                    <a href="index.html" class="btn-flat white">Cancelar</a>
+            </div>
+        </div>
+
+    <!--Materialize JS-->
+        <script type="text/javascript" src="js/materialize.js"></script>
+    </body>
+</html>
