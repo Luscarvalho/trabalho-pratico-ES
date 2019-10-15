@@ -56,7 +56,22 @@
                         <td>Grama</td>
                         <td>1</td>
                         <td><a href="" class="btn-floating teal"><i class="material-icons right">edit</i></i></a></td>
-                        <td><a href="" class="btn-floating red"><i class="material-icons right">delete</i></a></td>
+                        <td><a href="#remover" class="btn-floating red modal-trigger"><i class="material-icons right">delete</i></a></td>
+
+                    <!-- Caixa de dialogo -->
+                        <div id="remover" class="modal">
+                            <div class="modal-content">
+                                <blockquote>
+                                    <h4>Remover</h4>
+                                </blockquote>
+                                <h5>Tem certeza que deseja remover esse Pokémon?</h5>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-action modal-close waves-effect btn red">Remover</a>
+                                <a href="#!" class="modal-action modal-close waves-effect btn-flat">Cancelar</a>
+                            </div>
+                        </div>
+
                     </tr>
                     <tr>
                         <td>Ivysaur</td>
@@ -98,5 +113,13 @@
                 </tbody>
             </table>
         </div>
+
+    <!--Materialize JS-->
+        <script type="text/javascript" src="js/materialize.js">
+        </script>
+
+        <script>
+            M.AutoInit();
+        </script>
     </body>
 <html>
