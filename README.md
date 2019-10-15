@@ -15,6 +15,12 @@ Repositório para o trabalho prático de Engenharia de Software
 ### Planilha com as tarefas do trabalho:
 https://docs.google.com/spreadsheets/d/1FQvOTPGXo6NEMVj79Aovx7LCH5Q4Tsr-ycxp82Z3B_I/edit#gid=1743131327
 
+- [x] Fase 0
+- [ ] Fase 1
+- [ ] Fase 2
+- [ ] Fase 3
+
+
 
 ### Tecnologias utilizadas:
 
