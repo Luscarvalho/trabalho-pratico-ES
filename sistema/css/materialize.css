@@ -8605,8 +8605,8 @@ input[type=range]::-ms-thumb {
   transition: opacity .3s, -webkit-transform .3s;
   transition: opacity .3s, transform .3s;
   transition: opacity .3s, transform .3s, -webkit-transform .3s;
-  -webkit-animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-          animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  -webkit-animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) 2;
+          animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) 2;
   z-index: -1;
 }
 
