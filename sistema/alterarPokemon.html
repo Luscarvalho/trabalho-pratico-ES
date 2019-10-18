@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Alterar Pokémon</title>
+    <!--Icones-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Materialize CSS-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection">
+    </head>
+
+    <body>
+    <!-- Menu -->
+        <nav class="z-depth-1">
+            <div class="container" style="padding: 0 20px 0 20px;">
+                <a href="treinadorInicio.html" class="brand-logo">Simulador de Batalhas Pokémon</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="treinadorInicio.html" class="btn-flat transparent white-text">VOLTAR</a></li>
+                    <li><a href="index.html" class="btn white black-text">Sair<i class="material-icons right">close</i></a></li>
+                </ul>
+            </div>
+        </nav>
+
+    <!-- Navegacao -->
+        <nav class="transparent z-depth-0">
+            <div class="nav-wrapper container">
+                <a class="breadcrumb grey-text"></a>
+                <a href="treinadorInicio.html" class="breadcrumb grey-text">Início</a>
+                <a href="treinadorPerfil.html" class="breadcrumb grey-text">Editar Perfil</a>
+                <a href="" class="breadcrumb grey-text">Alterar Pokémon</a>
+            </div>
+        </nav>
+    
+    <!-- Pagina -->
+        <div class="container row">
+            <blockquote>
+                <h4>Alterar Pokémon</h4>
+            </blockquote>
+
+            <form method="POST" action="" autocomplete="off">   
+            <!-- POKEMON 1 -->
+            <div class="input-field col s12">
+                    <i class="material-icons prefix">looks_one</i>
+                    <input id="pokemon1" type="text" list="pokemon" name="cPokemon1">
+                    <label for="pokemon1">Pokémon 1</label>
+                </div>
+                
+            <!-- POKEMON 2 -->
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">looks_two</i>
+                    <input id="pokemon2" type="text" list="pokemon" name="cPokemon2">
+                    <label for="pokemon2">Pokémon 2</label>
+                </div>
+                
+            <!-- POKEMON 3 -->
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">looks_3</i>
+                    <input id="pokemon3" type="text" list="pokemon" name="cPokemon3">
+                    <label for="pokemon3">Pokémon 3</label>
+                </div>
+                
+            <!-- POKEMON 4 -->
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">looks_4</i>
+                    <input id="pokemon4" type="text" list="pokemon" name="cPokemon4">
+                    <label for="pokemon4">Pokémon 4</label>
+                </div>
+                
+            <!-- POKEMON 5 -->
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">looks_5</i>
+                    <input id="pokemon5" type="text" list="pokemon" name="cPokemon5">
+                    <label for="pokemon5">Pokémon 5</label>
+                </div>
+                
+            <!-- POKEMON 6 -->
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">looks_6</i>
+                    <input id="pokemon6" type="text" list="pokemon" name="cPokemon6">
+                    <label for="pokemon6">Pokémon 6</label>
+                </div>
+
+            <!-- SENHA -->
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">vpn_key</i>
+                    <input id="senha" type="password" name="cSenha" required>
+                    <label for="senha">Senha Atual</label>
+                </div> 
+                
+                <button type="submit" class="btn red">CONFIRMAR</button>
+                <a href="index.html" class="btn-flat white">Cancelar</a>
+            </form>
+        </div>
+    <!--Materialize JS-->
+        <script type="text/javascript" src="js/materialize.js"></script>
+    </body>
+</html>
