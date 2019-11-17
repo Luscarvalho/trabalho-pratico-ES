@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,8 +20,19 @@
                 
                 <h3 class="center-align"><i class="large material-icons">face</i><br>LOGIN</h3>
                 <br>
-                
-                <form method="POST" action="" autocomplete="off">
+
+                <?php
+                if(isset($_SESSION['naoAutenticado'])):
+                ?>
+                <blockquote>
+                    <p>Usuário ou senha inválidos</p>
+                </blockquote>
+                <?php
+                endif;
+                unset($_SESSION['naoAutenticado']);
+                ?>
+
+                <form method="POST" action="login.php" autocomplete="off">
                     <input type="text" placeholder="Usuário" name="cUsuario" required> <br>
                     <input type="password" placeholder="Senha" name="cSenha" required> <br><br>
                     <button type="submit" class="btn waves-effect"> Entrar </button>
