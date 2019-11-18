@@ -16,7 +16,7 @@ Repositório para o trabalho prático de Engenharia de Software
 https://docs.google.com/spreadsheets/d/1FQvOTPGXo6NEMVj79Aovx7LCH5Q4Tsr-ycxp82Z3B_I/edit#gid=1743131327
 
 - [x] Fase 0
-- [ ] Fase 1
+- [x] Fase 1
 - [ ] Fase 2
 - [ ] Fase 3
 
