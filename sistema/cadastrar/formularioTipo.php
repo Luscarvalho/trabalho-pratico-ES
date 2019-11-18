@@ -25,14 +25,14 @@ session_start();
 
                 <!-- AVISO DE TIPO EXISTENTE -->
                    <?php
-                    if(isset($_SESSION['naoAutenticado'])):
+                    if(isset($_SESSION['tipoJaExiste'])):
                     ?>
                     <blockquote>
-                        <p>Usuário ou senha inválidos</p>
+                        <p>O tipo já existe, tente novamente!</p>
                     </blockquote>
                     <?php
                     endif;
-                    unset($_SESSION['naoAutenticado']);
+                    unset($_SESSION['tipoJaExiste']);
                     ?>
 
                 <!-- TIPO -->
@@ -63,7 +63,7 @@ session_start();
                 <!-- BOTÕES -->
                     <div class="file-field input-field col s12">
                         <button type="submit" class="btn" name="btnTipo"> Adicionar </button>
-                        <a href="index.html" class="btn-flat black-text waves-effect"> Cancelar </a>
+                        <a href="../gerenciar/gerenciarTipos.php" class="btn-flat black-text waves-effect"> Cancelar </a>
                     </div>
                 </form>
 
