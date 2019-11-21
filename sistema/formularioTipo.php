@@ -10,10 +10,10 @@ session_start();
         <!--Icones-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Materialize CSS-->
-        <link type="text/css" rel="stylesheet" href="../css/materialize.css"  media="screen,projection">
+        <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection">
     </head>
 
-    <body style="background-image: url(../imagens/fundo-login.jpg); background-size: cover;">
+    <body style="background-image: url(imagens/fundo-login.jpg); background-size: cover;">
 
         <div class="valign-wrapper row" style="position: relative; min-height: 100vh;">
             <div class="card z-depth-3 container col s4 pull-s4">
@@ -21,7 +21,7 @@ session_start();
                 <h3 class="light">Novo Tipo</h3>
 
             <!-- FORMULÁRIO -->
-                <form method="POST" action="cadastrarTipo.php" enctype="multipart/form-data" autocomplete="off">
+                <form method="POST" action="controller/criarTipo.php" enctype="multipart/form-data" autocomplete="off">
 
                 <!-- AVISO DE TIPO EXISTENTE -->
                    <?php
