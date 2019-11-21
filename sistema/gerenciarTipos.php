@@ -1,5 +1,5 @@
 <?php
-include_once '../estruturas/conexao.php';
+include_once 'model/TipoDao.php';
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ include_once '../estruturas/conexao.php';
     <!--Icones-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Materialize CSS-->
-        <link type="text/css" rel="stylesheet" href="../css/materialize.css"  media="screen,projection">
+        <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection">
     
         <style>
         h4 {
@@ -46,27 +46,26 @@ include_once '../estruturas/conexao.php';
                 <h2>Tipos</h2>
             </blockquote>
             
-            <a href="../cadastrar/formularioTipo.php" class="btn" style="margin-bottom: 30px ;"><i class="material-icons right">add</i>Novo Tipo</a>
+            <a href="formularioTipo.php" class="btn" style="margin-bottom: 30px ;"><i class="material-icons right">add</i>Novo Tipo</a>
             <br>
         
         <!-- Cards -->
             <div class="row">
 
                 <?php
-                $sql = "SELECT * FROM tipo;";
-                $resultado = mysqli_query($conexao, $sql);
-                while($dados = mysqli_fetch_array($resultado)): 
+                $tipoDao = new TipoDao();
+                foreach($tipoDao->readAll() as $tipo): 
                 ?>
 
                 <div class="col s3">
                     <div class="card hoverable">
                         <div class="card-image">
-                            <img src="<?php echo $dados['imagem']; ?>">
+                            <img src="<?php echo $tipo['imagem']; ?>">
                         </div>
                         <div class="card-content center">
-                            <h4><?php echo $dados['tipoNome']; ?></h4>
-                            <p class="green white-text"><?php echo $dados['forca']; ?></p>
-                            <p class="red white-text"><?php echo $dados['fraqueza']; ?></p>
+                            <h4><?php echo $tipo['tipoNome']; ?></h4>
+                            <p class="green white-text"><?php echo $tipo['forca']; ?></p>
+                            <p class="red white-text"><?php echo $tipo['fraqueza']; ?></p>
                         </div>
                         <div class="card-action center">
                             <a href="" class="btn-floating teal"><i class="material-icons right">edit</i></a>
@@ -76,7 +75,8 @@ include_once '../estruturas/conexao.php';
                     </div>
                 </div>
 
-                <?php endwhile; ?>   
+                <?php endforeach; ?> 
+            </div>  
 
         <!-- Caixa de dialogo -->
             <div id="remover" class="modal">
@@ -91,6 +91,7 @@ include_once '../estruturas/conexao.php';
                     <a href="#!" class="modal-action modal-close waves-effect btn-flat">Cancelar</a>
                 </div>
             </div>
+
     <!--Materialize JS-->
     <script type="text/javascript" src="js/materialize.js">
     </script>

@@ -63,7 +63,7 @@ session_start();
                 <!-- BOTÕES -->
                     <div class="file-field input-field col s12">
                         <button type="submit" class="btn" name="btnTipo"> Adicionar </button>
-                        <a href="../gerenciar/gerenciarTipos.php" class="btn-flat black-text waves-effect"> Cancelar </a>
+                        <a href="gerenciarTipos.php" class="btn-flat black-text waves-effect"> Cancelar </a>
                     </div>
                 </form>
 

@@ -17,24 +17,38 @@ class TipoDao {
 
         if ($stmt->execute()) {
             if ($stmt->rowCount() > 0) {
-                echo "Dados cadastrados com sucesso!";
+                header('Location: ../gerenciarTipos.php');
             } else {
                 echo "Erro ao tentar efetivar cadastro";
             }
-        } else {
-            throw new PDOException("Erro: Não foi possível executar a declaração sql");
-        }
+        } 
     }
 
     public function readAll() {
-        $sql = 'SELECT * FROM tipo';
+        $sql = 'SELECT * FROM tipo ORDER BY tipoNome';
 
         $stmt = Conexao::getConn()->prepare($sql);
         $stmt->execute();
+
+        if($stmt->rowCount() > 0):
+            $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        else:
+            return[];
+        endif;
     }
 
-    public function readName($tipoNome) {
+    public function readName(String $tipoNome) {
+        $sql = "SELECT * FROM tipo WHERE tipoNome = '$tipoNome'";
 
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0):
+            return true;
+        else:
+            return false;
+        endif;
     }
 
     public function update(Tipo $tipo) {
