@@ -1,6 +1,6 @@
 # Padrões Adotados
 
-##Regras de Verificação e Análise de Requisitos:
+## Regras de Verificação e Análise de Requisitos:
 
 Especificação dos requisitos:
 - Evitar frases com mais de 100 caracteres;
@@ -17,7 +17,7 @@ A nomenclatura dos requisitos seguirá a seguinte regra:
 	Onde XXX representa um número no esquema 001
 <br>
 
-##Mensagens de commit
+## Mensagens de commit
 - Usar modo imperativo ("Adiciona feature" não "Adicionando feature" ou "Adicionada feature")
 - Primeira linha deve ter no máximo 72 caracteres
 - Considere descrever com detalhes no corpo do commit
@@ -41,7 +41,7 @@ Emoji | Code | Commit Type
 [BASEADO EM](https://gist.github.com/viniciustpimenta/c58ada969cf30130f74c2daebf4f15cb)
 <br>
 
-##Práticas de codificação:
+## Práticas de codificação:
 
 - Identar o código: 4 espaços para cada nível
 - Colocar espaços dos dois lados dos operadores aritméticos
