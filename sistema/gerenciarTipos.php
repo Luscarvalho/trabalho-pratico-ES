@@ -70,7 +70,6 @@ include_once 'model/TipoDao.php';
                         <div class="card-action center">
                             <a href="" class="btn-floating teal"><i class="material-icons right">edit</i></a>
                             <a href="#remover" class="btn-floating red modal-trigger"><i class="material-icons right">delete</i></a>
-                        
                         </div>
                     </div>
                 </div>

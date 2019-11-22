@@ -32,7 +32,7 @@ session_start();
                 unset($_SESSION['naoAutenticado']);
                 ?>
 
-                <form method="POST" action="login.php" autocomplete="off">
+                <form method="POST" action="controller/fazerLogin.php" autocomplete="off">
                     <input type="text" placeholder="Usuário" name="cUsuario" required> <br>
                     <input type="password" placeholder="Senha" name="cSenha" required> <br><br>
                     <button type="submit" class="btn waves-effect"> Entrar </button>
