@@ -57,7 +57,7 @@ include_once 'model/TipoDao.php';
                 $tipoDao = new TipoDao();
                 foreach($tipoDao->readAll() as $tipo): 
                 ?>
-
+            <!-- Dados -->
                 <div class="col s3">
                     <div class="card hoverable">
                         <div class="card-image">
@@ -70,27 +70,29 @@ include_once 'model/TipoDao.php';
                         </div>
                         <div class="card-action center">
                             <a href="formularioEditarTipo.php?id=<?php echo $tipo['tipoId'];?>" class="btn-floating teal"><i class="material-icons right">edit</i></a>
-                            <a href="#remover" class="btn-floating red modal-trigger"><i class="material-icons right">delete</i></a>
+                            <a href="#remover<?php echo $tipo['tipoId'];?>" class="btn-floating red modal-trigger"><i class="material-icons right">delete</i></a>
                         </div>
+                    </div>
+                </div>
+
+            <!-- Caixa de dialogo -->
+                <div id="remover<?php echo $tipo['tipoId'];?>" class="modal">
+                    <div class="modal-content">
+                        <blockquote>
+                            <h4>Remover</h4>
+                        </blockquote>
+                        <h5>Tem certeza que deseja remover esse tipo?</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="controller/removerTipo.php?id=<?php echo $tipo['tipoId'];?>" class="modal-action modal-close waves-effect btn red">Remover</a>
+                        <a href="" class="modal-action modal-close waves-effect btn-flat">Cancelar</a>
                     </div>
                 </div>
 
                 <?php endforeach; ?> 
             </div>  
 
-        <!-- Caixa de dialogo -->
-            <div id="remover" class="modal">
-                <div class="modal-content">
-                    <blockquote>
-                        <h4>Remover</h4>
-                    </blockquote>
-                    <h5>Tem certeza que deseja remover esse tipo?</h5>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect btn red">Remover</a>
-                    <a href="#!" class="modal-action modal-close waves-effect btn-flat">Cancelar</a>
-                </div>
-            </div>
+        
 
     <!--Materialize JS-->
     <script type="text/javascript" src="js/materialize.js">

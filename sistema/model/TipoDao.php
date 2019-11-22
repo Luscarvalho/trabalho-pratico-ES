@@ -83,10 +83,19 @@ class TipoDao {
     }
 
     public function delete($id) {
+        $sql = 'DELETE FROM tipo WHERE tipoId=?';
 
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->bindValue(1, $id);
+    
+        if ($stmt->execute()) {
+            if ($stmt->rowCount() > 0) {
+                header('Location: ../gerenciarTipos.php');
+            } else {
+                echo "Erro ao tentar remover";
+            }
+        } 
     }
-
-
 
 }
 
