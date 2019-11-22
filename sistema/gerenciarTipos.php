@@ -46,6 +46,7 @@ include_once 'model/TipoDao.php';
                 <h2>Tipos</h2>
             </blockquote>
             
+        <!-- Novo Tipo -->
             <a href="formularioTipo.php" class="btn" style="margin-bottom: 30px ;"><i class="material-icons right">add</i>Novo Tipo</a>
             <br>
         
@@ -68,7 +69,7 @@ include_once 'model/TipoDao.php';
                             <p class="red white-text"><?php echo $tipo['fraqueza']; ?></p>
                         </div>
                         <div class="card-action center">
-                            <a href="" class="btn-floating teal"><i class="material-icons right">edit</i></a>
+                            <a href="formularioEditarTipo.php?id=<?php echo $tipo['tipoId'];?>" class="btn-floating teal"><i class="material-icons right">edit</i></a>
                             <a href="#remover" class="btn-floating red modal-trigger"><i class="material-icons right">delete</i></a>
                         </div>
                     </div>

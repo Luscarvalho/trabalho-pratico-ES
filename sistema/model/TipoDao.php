@@ -51,8 +51,35 @@ class TipoDao {
         endif;
     }
 
-    public function update(Tipo $tipo) {
+    public function readId(String $tipoId) {
+        $sql = "SELECT * FROM tipo WHERE tipoId = '$tipoId'";
 
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0):
+            $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        else:
+            return [];
+        endif;
+    }
+
+    public function update(Tipo $tipo) {
+        $sql = 'UPDATE tipo SET forca=?, fraqueza=? WHERE tipoId=?';
+
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->bindValue(1, $tipo->getForca());
+        $stmt->bindValue(2, $tipo->getFraqueza());
+        $stmt->bindValue(3, $tipo->getId());
+
+        if ($stmt->execute()) {
+            if ($stmt->rowCount() > 0) {
+                header('Location: ../gerenciarTipos.php');
+            } else {
+                echo "Erro ao tentar efetivar a atualização";
+            }
+        } 
     }
 
     public function delete($id) {
