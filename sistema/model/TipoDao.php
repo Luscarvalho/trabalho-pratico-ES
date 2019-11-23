@@ -1,5 +1,4 @@
 <?php
-
 include_once 'Tipo.php';
 include_once 'Conexao.php';
 
@@ -17,7 +16,7 @@ class TipoDao {
 
         if ($stmt->execute()) {
             if ($stmt->rowCount() > 0) {
-                header('Location: ../gerenciarTipos.php');
+                header('Location: ../view/gerenciarTipos.php');
             } else {
                 echo "Erro ao tentar efetivar cadastro";
             }
@@ -51,7 +50,7 @@ class TipoDao {
         endif;
     }
 
-    public function readId(String $tipoId) {
+    public function readId($tipoId) {
         $sql = "SELECT * FROM tipo WHERE tipoId = '$tipoId'";
 
         $stmt = Conexao::getConn()->prepare($sql);
@@ -75,7 +74,7 @@ class TipoDao {
 
         if ($stmt->execute()) {
             if ($stmt->rowCount() > 0) {
-                header('Location: ../gerenciarTipos.php');
+                header('Location: ../view/gerenciarTipos.php');
             } else {
                 echo "Erro ao tentar efetivar a atualização";
             }
@@ -90,13 +89,12 @@ class TipoDao {
     
         if ($stmt->execute()) {
             if ($stmt->rowCount() > 0) {
-                header('Location: ../gerenciarTipos.php');
+                header('Location: ../view/gerenciarTipos.php');
             } else {
                 echo "Erro ao tentar remover";
             }
         } 
     }
-
 }
 
 ?>

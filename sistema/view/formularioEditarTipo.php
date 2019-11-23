@@ -1,5 +1,12 @@
 <?php
-session_start();
+include_once '../model/TipoDao.php';
+
+$tipo;
+if(isset($_GET['id'])):
+    $id = $_GET['id'];
+    $tipoDao = new TipoDao();
+    $tipo = $tipoDao->readId($id)[0];
+endif;
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +17,7 @@ session_start();
         <!--Icones-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Materialize CSS-->
-        <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection">
+        <link type="text/css" rel="stylesheet" href="../css/materialize.css"  media="screen,projection">
     </head>
 
     <body style="background-image: url(imagens/fundo-login.jpg); background-size: cover;">
@@ -21,48 +28,38 @@ session_start();
                 <h3 class="light">Novo Tipo</h3>
 
             <!-- FORMULÁRIO -->
-                <form method="POST" action="controller/criarTipo.php" enctype="multipart/form-data" autocomplete="off">
-
-                <!-- AVISO DE TIPO EXISTENTE -->
-                   <?php
-                    if(isset($_SESSION['tipoJaExiste'])):
-                    ?>
-                    <blockquote>
-                        <p>O tipo já existe, tente novamente!</p>
-                    </blockquote>
-                    <?php
-                    endif;
-                    unset($_SESSION['tipoJaExiste']);
-                    ?>
+                <form method="POST" action="../controller/controladorTipo.php?id=<?php echo $tipo['tipoId']; ?>&btn=editarTipo" autocomplete="off">
 
                 <!-- TIPO -->
+                    <input type="hidden" name="cTipo" placeholder="Tipo" value="<?php echo $tipo['tipoNome']; ?>" required>
+
                     <div class="input-field col s12">
                         <i class="material-icons prefix">bubble_chart</i>
-                        <input type="text" name="cTipo" placeholder="Tipo" required>
+                        <input type="text" placeholder="Tipo" value="<?php echo $tipo['tipoNome']; ?>" disabled>
                     </div>
                     
-                <!-- FORCA -->
+                <!-- FORÇA -->
                     <div class="input-field col s12">
                         <i class="material-icons prefix">thumb_up</i>
-                        <input type="text" name="cForca" placeholder="Força" required>
+                        <input type="text" name="cForca" placeholder="Força" value="<?php echo $tipo['forca']; ?>" required>
                     </div>
 
                 <!-- CONFIRMAR SENHA -->
                     <div class="input-field col s12">
                         <i class="material-icons prefix">thumb_down</i>
-                        <input type="text" name="cFraqueza" placeholder="Fraqueza" required>
+                        <input type="text" name="cFraqueza" placeholder="Fraqueza" value="<?php echo $tipo['fraqueza']; ?>" required>
                     </div>
 
                 <!-- IMAGEM -->
                     <div class="container col s12">
                         <div class="btn teal lighten-5 black-text col s12">
-                            <input type="file" accept=".jpeg, .jpg, .png" name="cImagem" required>
+                            <input type="file" accept=".jpeg, .jpg, .png" name="cImagem" value="<?php echo $tipo['imagem']; ?>" disabled>
                         </div>
                     </div>
 
                 <!-- BOTÕES -->
                     <div class="file-field input-field col s12">
-                        <button type="submit" class="btn" name="btnTipo"> Adicionar </button>
+                        <button type="submit" class="btn" name="btnTipo"> Editar </button>
                         <a href="gerenciarTipos.php" class="btn-flat black-text waves-effect"> Cancelar </a>
                     </div>
                 </form>

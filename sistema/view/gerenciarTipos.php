@@ -1,5 +1,5 @@
 <?php
-include_once 'model/TipoDao.php';
+include_once '../controller/controladorTipo.php';
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ include_once 'model/TipoDao.php';
     <!--Icones-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Materialize CSS-->
-        <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection">
+        <link type="text/css" rel="stylesheet" href="../css/materialize.css"  media="screen,projection">
     
         <style>
         h4 {
@@ -36,7 +36,7 @@ include_once 'model/TipoDao.php';
             <div class="container row">
                 <div class="col s12 z-depth-0"></div>
                     <a href="enfermeiraJoy.html" class="breadcrumb grey-text">Início</a>
-                    <a href="enfermeiraJoy.html" class="breadcrumb grey-text">Tipos</a>
+                    <a href="" class="breadcrumb grey-text">Tipos</a>
                 </div>
             </div>
         </nav>
@@ -46,16 +46,15 @@ include_once 'model/TipoDao.php';
                 <h2>Tipos</h2>
             </blockquote>
             
-        <!-- Novo Tipo -->
-            <a href="formularioTipo.php" class="btn" style="margin-bottom: 30px ;"><i class="material-icons right">add</i>Novo Tipo</a>
+        <!-- Btn Novo Tipo -->
+            <a href="formularioNovoTipo.php" class="btn" style="margin-bottom: 30px ;"><i class="material-icons right">add</i>Novo Tipo</a>
             <br>
         
         <!-- Cards -->
             <div class="row">
 
                 <?php
-                $tipoDao = new TipoDao();
-                foreach($tipoDao->readAll() as $tipo): 
+                foreach(ControladorTipo::listarTipo() as $tipo): //================================
                 ?>
             <!-- Dados -->
                 <div class="col s3">
@@ -84,18 +83,19 @@ include_once 'model/TipoDao.php';
                         <h5>Tem certeza que deseja remover esse tipo?</h5>
                     </div>
                     <div class="modal-footer">
-                        <a href="controller/removerTipo.php?id=<?php echo $tipo['tipoId'];?>" class="modal-action modal-close waves-effect btn red">Remover</a>
+                        <a href="../controller/controladorTipo.php?id=<?php echo $tipo['tipoId'];?>&btn=removerTipo" class="modal-action modal-close waves-effect btn red">Remover</a>
                         <a href="" class="modal-action modal-close waves-effect btn-flat">Cancelar</a>
                     </div>
                 </div>
 
-                <?php endforeach; ?> 
+                <?php
+                endforeach; //=====================================================================
+                ?> 
             </div>  
-
         
 
     <!--Materialize JS-->
-    <script type="text/javascript" src="js/materialize.js">
+    <script type="text/javascript" src="../js/materialize.js">
     </script>
 
     <script>
