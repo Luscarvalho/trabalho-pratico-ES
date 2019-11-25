@@ -1,3 +1,7 @@
+<?php
+include_once '../controller/controladorPokemon.php';
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -39,7 +43,8 @@
                     <h2>Pokémon</h2>
                 </blockquote>
 
-                <a href="" class="btn"><i class="material-icons right">add</i>Novo Pokémon</a>
+                <a href="formularioNovoPokemon.php" class="btn"><i class="material-icons right">add</i>Novo Pokémon</a>
+
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -48,12 +53,20 @@
                         <th>Remover</th>
                     </tr>
                 </thead>
+
+                <?php
+                //Chama o método que lista os pokémon
+                //foreach(ControladorPokemon::listarPokemon() as $pokemon): 
+
+                //preciasa alterar os campos pra pegarem o valor correto do BD,
+                //por exemplo: <?php echo $pokemon['pokemonNome']; ? >
+                ?>
         
                 <tbody>
                     <tr>
                         <td>Bulbasaur</td>
                         <td>Grama</td>
-                        <td><a href="" class="btn-floating teal"><i class="material-icons right">edit</i></i></a></td>
+                        <td><a href="formularioEditarPokemon.php" class="btn-floating teal"><i class="material-icons right">edit</i></i></a></td>
                         <td><a href="#remover" class="btn-floating red modal-trigger"><i class="material-icons right">delete</i></a></td>
 
                     <!-- Caixa de dialogo -->
@@ -69,46 +82,16 @@
                                 <a href="#!" class="modal-action modal-close waves-effect btn-flat">Cancelar</a>
                             </div>
                         </div>
-
                     </tr>
-                    <tr>
-                        <td>Ivysaur</td>
-                        <td>Grama</td>
-                        <td><a href="" class="btn-floating teal"><i class="material-icons right">edit</i></i></a></td>
-                        <td><a href="" class="btn-floating red"><i class="material-icons right">delete</i></a></td>
-                    </tr>
-                    <tr>
-                        <td>Venusaur</td>
-                        <td>Grama</td>
-                        <td><a href="" class="btn-floating teal"><i class="material-icons right">edit</i></i></a></td>
-                        <td><a href="" class="btn-floating red"><i class="material-icons right">delete</i></a></td>
-                    </tr>
-
-                    <tr>
-                        <td>Charmander</td>
-                        <td>Fogo</td>
-                        <td><a href="" class="btn-floating teal"><i class="material-icons right">edit</i></i></a></td>
-                        <td><a href="" class="btn-floating red"><i class="material-icons right">delete</i></a></td>
-                    </tr>
-                    <tr>
-                        <td>Charmeleon</td>
-                        <td>Fogo</td>
-                        <td><a href="" class="btn-floating teal"><i class="material-icons right">edit</i></i></a></td>
-                        <td><a href="" class="btn-floating red"><i class="material-icons right">delete</i></a></td>
-                    </tr>
-                    <tr>
-                        <td>Charizard</td>
-                        <td>Fogo</td>
-                        <td><a href="" class="btn-floating teal"><i class="material-icons right">edit</i></i></a></td>
-                        <td><a href="" class="btn-floating red"><i class="material-icons right">delete</i></a></td>
-                    </tr>
-
                 </tbody>
+                <?php
+                //endforeach;
+                ?>
             </table>
         </div>
 
     <!--Materialize JS-->
-        <script type="text/javascript" src="js/materialize.js">
+        <script type="text/javascript" src="../js/materialize.js">
         </script>
 
         <script>

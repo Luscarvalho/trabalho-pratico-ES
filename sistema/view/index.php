@@ -1,6 +1,5 @@
 <?php
 session_start();
-define('ROOT_PATH', dirname(__FILE__));
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +10,7 @@ define('ROOT_PATH', dirname(__FILE__));
         <!--Icones-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Materialize CSS-->
-        <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection">
+        <link type="text/css" rel="stylesheet" href="../css/materialize.css"  media="screen,projection">
     </head>
 
     <body style="background-image: url(imagens/fundo-login.jpg); background-size: cover;">
@@ -22,6 +21,7 @@ define('ROOT_PATH', dirname(__FILE__));
                 <h3 class="center-align"><i class="large material-icons">face</i><br>LOGIN</h3>
                 <br>
 
+            <!-- Aviso -->
                 <?php
                 if(isset($_SESSION['naoAutenticado'])):
                 ?>
@@ -33,7 +33,8 @@ define('ROOT_PATH', dirname(__FILE__));
                 unset($_SESSION['naoAutenticado']);
                 ?>
 
-                <form method="POST" action="controller/fazerLogin.php" autocomplete="off">
+            <!-- Formulario -->
+                <form method="POST" action="../controller/fazerLogin.php" autocomplete="off">
                     <input type="text" placeholder="Usuário" name="cUsuario" required> <br>
                     <input type="password" placeholder="Senha" name="cSenha" required> <br><br>
                     <button type="submit" class="btn waves-effect"> Entrar </button>
