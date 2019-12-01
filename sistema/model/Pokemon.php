@@ -1,13 +1,13 @@
 <?php
 
-class Tipo {
-    private $pokemonId;
+class Pokemon {
+    private $id;
     private $pokemonNome;
     private	$tipoId;
     private $imagem; //Apenas o caminho
 
-    public function getPokemonId() {
-        return $this->pokemonId;
+    public function getId() {
+        return $this->id;
     }
 
     public function getPokemonNome() {
@@ -22,8 +22,8 @@ class Tipo {
         return $this->imagem;
     }
 
-    public function setPokemonId($pokemonId) {
-        $this->pokemonId = $pokemonId;
+    public function setId(int $id) {
+        $this->id = $id;
     }
 
     public function setPokemonNome($nome) {
@@ -32,6 +32,10 @@ class Tipo {
 
     public function setImagem($imagem) {
         $this->imagem = $imagem;
+    }
+
+    public function setTipoId($tipoId) {
+        $this->tipoId = $tipoId;
     }
 }
 

@@ -1,11 +1,9 @@
 <?php
-include_once '../model/TipoDao.php';
+include_once '../controller/controladorTipo.php';
 
-$tipo;
 if(isset($_GET['id'])):
     $id = $_GET['id'];
-    $tipoDao = new TipoDao();
-    $tipo = $tipoDao->readId($id)[0];
+    $tipo = ControladorTipo::getById($id);
 endif;
 ?>
 

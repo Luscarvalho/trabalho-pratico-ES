@@ -38,7 +38,7 @@ include_once '../controller/controladorPokemon.php';
         <div class="container">
         
         <!-- Tabela -->
-            <table class="striped centered">
+            <table class="highlight centered">
                 <blockquote>
                     <h2>Pokémon</h2>
                 </blockquote>
@@ -49,28 +49,21 @@ include_once '../controller/controladorPokemon.php';
                     <tr>
                         <th>Name</th>
                         <th>Tipo</th>
-                        <th>Editar</th>
                         <th>Remover</th>
                     </tr>
                 </thead>
-
-                <?php
-                //Chama o método que lista os pokémon
-                //foreach(ControladorPokemon::listarPokemon() as $pokemon): 
-
-                //preciasa alterar os campos pra pegarem o valor correto do BD,
-                //por exemplo: <?php echo $pokemon['pokemonNome']; ? >
-                ?>
         
                 <tbody>
+                    <?php
+                    foreach(ControladorPokemon::listarPokemon() as $pokemon): 
+                    ?>
                     <tr>
-                        <td>Bulbasaur</td>
-                        <td>Grama</td>
-                        <td><a href="formularioEditarPokemon.php" class="btn-floating teal"><i class="material-icons right">edit</i></i></a></td>
-                        <td><a href="#remover" class="btn-floating red modal-trigger"><i class="material-icons right">delete</i></a></td>
+                        <td><?php echo $pokemon['nomePokemon']; ?></td>
+                        <td><?php echo ControladorPokemon::getTipoById($pokemon['tipoId'])[0]['tipoNome']; ?></td>
+                        <td><a href="#remover<?php echo $pokemon['pokemonId'];?>" class="btn-floating red modal-trigger"><i class="material-icons right">delete</i></a></td>
 
                     <!-- Caixa de dialogo -->
-                        <div id="remover" class="modal">
+                        <div id="remover<?php echo $pokemon['pokemonId'];?>" class="modal">
                             <div class="modal-content">
                                 <blockquote>
                                     <h4>Remover</h4>
@@ -78,14 +71,14 @@ include_once '../controller/controladorPokemon.php';
                                 <h5>Tem certeza que deseja remover esse Pokémon?</h5>
                             </div>
                             <div class="modal-footer">
-                                <a href="#!" class="modal-action modal-close waves-effect btn red">Remover</a>
-                                <a href="#!" class="modal-action modal-close waves-effect btn-flat">Cancelar</a>
+                                <a href="../controller/controladorPokemon.php?id=<?php echo $pokemon['pokemonId'];?>&btn=removerPokemon" class="modal-action modal-close waves-effect btn red">Remover</a>
+                                <a href="" class="modal-action modal-close waves-effect btn-flat">Cancelar</a>
                             </div>
                         </div>
                     </tr>
                 </tbody>
                 <?php
-                //endforeach;
+                endforeach;
                 ?>
             </table>
         </div>

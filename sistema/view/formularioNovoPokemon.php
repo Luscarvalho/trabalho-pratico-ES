@@ -1,5 +1,5 @@
 <?php
-session_start();
+include_once '../controller/controladorTipo.php';
 ?>
 
 <!DOCTYPE html>
@@ -21,48 +21,43 @@ session_start();
                 <h3 class="light">Novo Pokémon</h3>
 
             <!-- FORMULÁRIO -->
-                <form method="POST" action="" enctype="multipart/form-data" autocomplete="off">
+                <form method="POST" action="../controller/controladorPokemon.php?btn=cadastrarPokemon" enctype="multipart/form-data" autocomplete="off">
 
                 <!-- AVISO DE POKÉMON EXISTENTE -->
                     <?php
-                    if(isset($_SESSION[''])):
+                    if(isset($_SESSION['pokemonJaCadastrado'])):
                     ?>
                     <blockquote>
                         <p>Esse pokémon já está caadastrado, tente novamente!</p>
                     </blockquote>
                     <?php
                     endif;
-                    unset($_SESSION['']);
-                    ?>
-
-                <!-- AVISO DE TIPO INEXISTENTE -->
-                    <?php
-                    if(isset($_SESSION[''])):
-                    ?>
-                    <blockquote>
-                        <p>Esse tipo não existe, tente novamente!</p>
-                    </blockquote>
-                    <?php
-                    endif;
-                    unset($_SESSION['']);
                     ?>
 
                 <!-- NOME -->
                     <div class="input-field col s12">
                         <i class="material-icons prefix">pets</i>
-                        <input type="text" name="" placeholder="Nome do Pokémon" required>
+                        <input type="text" name="cPokemonNome" placeholder="Nome do Pokémon" required>
                     </div>
                     
                 <!-- TIPO -->
+                    <datalist id="tipos">
+                        <?php foreach(ControladorTipo::listarTipo() as $tipo): ?>
+                            <option value="<?php echo $tipo['tipoNome']?>">
+                                <?php echo $tipo['tipoNome']?>
+                            </option>
+                        <?php endforeach; ?>
+                    </datalist>
+                    
                     <div class="input-field col s12">
                         <i class="material-icons prefix">bubble_chart</i>
-                        <input type="text" name="" placeholder="Tipo do Pokémon" required>
+                        <input type="text" name="cTipoPokemon" placeholder="Tipo do Pokémon" list="tipos" required>
                     </div>
 
                 <!-- IMAGEM -->
                     <div class="container col s12">
                         <div class="btn teal lighten-5 black-text col s12">
-                            <input type="file" accept=".jpeg, .jpg, .png" name="" required>
+                            <input type="file" accept=".jpeg, .jpg, .png" name="cImagem" required>
                         </div>
                     </div>
 
@@ -76,7 +71,13 @@ session_start();
                 <br>
             </div>
         </div>
-        <!--Materialize JS-->
-        <script type="text/javascript" src="js/materialize.js"></script>
+
+    <!--Materialize JS-->
+        <script type="text/javascript" src="js/materialize.js">
+            document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('.autocomplete');
+                var instances = M.Autocomplete.init(elems, options);
+            });
+        </script>
     </body>
 </html>

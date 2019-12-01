@@ -1,6 +1,7 @@
 <?php 
 session_start();
-include_once '../model/TipoDao.php';
+include_once '../persistence/TipoDao.php';
+include_once '../persistence/PokemonDao.php';
 include_once '../model/Tipo.php';
 
 class ControladorTipo {
@@ -57,9 +58,19 @@ class ControladorTipo {
     public function removerTipo() {
         $id = $_GET['id'];
 
-        echo "deletando";
+        foreach (PokemonDao::readAllByTipo($id) as $pokemon):
+            PokemonDao::delete($pokemon['pokemonId']);
+        endforeach;
+
         $tipoDao = new TipoDao();
         $tipoDao->delete($id);
+    }
+
+    public function getById($id) {
+        $tipoDao = new TipoDao();
+        $tipo = new Tipo();
+        $tipo = $tipoDao->readId($id)[0];
+        return $tipo;
     }
 }
 
@@ -70,12 +81,12 @@ if(isset($_GET['btn'])) {
         case "cadastrarTipo":
             $ControladorTipo = new ControladorTipo();
             $ControladorTipo->criarTipo($_POST);
-            break;
+        break;
             
         case "removerTipo":
             $ControladorTipo = new ControladorTipo();
             $ControladorTipo->removerTipo($_POST);
-            break;
+        break;
 
         case "editarTipo";
             $ControladorTipo = new ControladorTipo();

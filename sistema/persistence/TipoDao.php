@@ -1,11 +1,10 @@
 <?php
-include_once 'Tipo.php';
+include_once '../model/Tipo.php';
 include_once 'Conexao.php';
 
 class TipoDao {
     
     public function create(Tipo $tipo) {
-
         $sql = 'INSERT INTO tipo (tipoNome, forca, fraqueza, imagem) VALUES (?, ?, ?, ?)';
         
         $stmt = Conexao::getConn()->prepare($sql);
@@ -50,7 +49,7 @@ class TipoDao {
         endif;
     }
 
-    public function readId($tipoId) {
+    public function readId(int $tipoId) {
         $sql = "SELECT * FROM tipo WHERE tipoId = '$tipoId'";
 
         $stmt = Conexao::getConn()->prepare($sql);
@@ -81,7 +80,7 @@ class TipoDao {
         } 
     }
 
-    public function delete($id) {
+    public function delete(int $id) {
         $sql = 'DELETE FROM tipo WHERE tipoId=?';
 
         $stmt = Conexao::getConn()->prepare($sql);
@@ -94,6 +93,18 @@ class TipoDao {
                 echo "Erro ao tentar remover";
             }
         } 
+    }
+
+    public function readIdByName(String $tipoNome) {
+        $sql = "SELECT * FROM tipo WHERE tipoNome = '$tipoNome'";
+        
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0):
+            $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado[0]['tipoId'];
+        endif;
     }
 }
 
