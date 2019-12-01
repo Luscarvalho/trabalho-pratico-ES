@@ -58,6 +58,7 @@ class ControladorTipo {
     public function removerTipo() {
         $id = $_GET['id'];
 
+        //Apaga todos os pokémon do tipo a ser apagado
         foreach (PokemonDao::readAllByTipo($id) as $pokemon):
             PokemonDao::delete($pokemon['pokemonId']);
         endforeach;
