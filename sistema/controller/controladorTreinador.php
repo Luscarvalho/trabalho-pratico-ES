@@ -40,9 +40,9 @@ class controladorTreinador {
         $treinadorDao->create($treinador);
     }
 
-    public function listarTreinador() {
-        $tipoDao = new TipoDao();
-        return $tipoDao->readAll();
+    public function listarTreinadores() {
+        $treinadorDao = new TreinadorDao();
+        return $treinadorDao->readAll();
     }
 
     public function getTreinadorById($id) {
@@ -75,6 +75,27 @@ class controladorTreinador {
         endforeach;
         
         $relacao->create($treinador, $listaIdPokemon);
+    }
+
+    public function getListaPokemon($treinadorId) {
+        $relacaoDao = new Treinador_pokemonDao();
+        $relacao = $relacaoDao->readByTreinador($treinadorId);
+        $listaIdPokemon = array();
+        $listaPokemon = array();
+        
+        array_push($listaIdPokemon, $relacao['pokemon1']);
+        array_push($listaIdPokemon, $relacao['pokemon2']);
+        array_push($listaIdPokemon, $relacao['pokemon3']);
+        array_push($listaIdPokemon, $relacao['pokemon4']);
+        array_push($listaIdPokemon, $relacao['pokemon5']);
+        array_push($listaIdPokemon, $relacao['pokemon6']);
+        $pokemonDao = new PokemonDao;
+
+        foreach($listaIdPokemon as $idPokemon):
+            array_push($listaPokemon, $pokemonDao->readId($idPokemon));
+        endforeach;
+
+        return $listaPokemon;
     }
 }
 

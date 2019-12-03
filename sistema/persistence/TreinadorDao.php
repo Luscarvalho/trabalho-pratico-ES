@@ -53,7 +53,7 @@ class TreinadorDao {
     }
 
     public function readAll() {
-        $sql = "SELECT * FROM treinador";
+        $sql = "SELECT * FROM treinador ORDER BY treinadorNome";
 
         $stmt = Conexao::getConn()->prepare($sql);
         $stmt->execute();

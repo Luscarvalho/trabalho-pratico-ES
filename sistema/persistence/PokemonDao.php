@@ -35,7 +35,7 @@ class PokemonDao {
             $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $resultado;
         else:
-            return[];
+            return [];
         endif;
     }
 

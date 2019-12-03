@@ -57,7 +57,7 @@ class TipoDao {
 
         if($stmt->rowCount() > 0):
             $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $resultado;
+            return $resultado[0];
         else:
             return [];
         endif;
@@ -104,6 +104,20 @@ class TipoDao {
         if($stmt->rowCount() > 0):
             $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $resultado[0]['tipoId'];
+        endif;
+    }
+
+    public function readByName(String $nome) {
+        $sql = "SELECT * FROM tipo WHERE tipoNome = '$nome'";
+
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0):
+            $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        else:
+            return [];
         endif;
     }
 }

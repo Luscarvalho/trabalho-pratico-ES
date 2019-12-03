@@ -2,8 +2,8 @@
 include_once '../controller/controladorTreinador.php';
 include_once '../model/Treinador.php';
 
+$id = $_SESSION['treinadorLogado'];
 if (isset($_SESSION['treinadorLogado'])):
-    $id = $_SESSION['treinadorLogado'];
     $treinador = new Treinador();
     $treinador = ControladorTreinador::getTreinadorById($id);
 else:
@@ -43,12 +43,12 @@ endif;
     
     <!-- Pagina -->
         <div class="container row">   
-        <!-- topo -->
+        <!-- Treinador -->
             <div class="card row transparent z-depth-0">
                 <div class="row transparent valign-wrapper">
 
                     <div class="col s2"> <!-- Imagem -->
-                        <img src="<?php echo $treinador['foto']; ?>" alt="" class="circle" style="max-width: 100%;">
+                        <img src="<?php echo $treinador['foto']; ?>" class="circle" style="max-width: 100%;">
                     </div>
 
                     <div class="col s7"> <!-- Nome -->
@@ -59,15 +59,15 @@ endif;
                     </div>
 
                     <div class="col3 center"> <!-- Botoes -->
-                        <a href="batalhaOponente.html" class="btn-small pulse z-depth-1 orange" style="min-width: 100%;">
+                        <a href="batalhaOponente.php" class="btn-small pulse z-depth-1 orange" style="min-width: 100%;">
                             <b>Batalhar</b>
                         </a> <br>
 
-                        <a href="treinadorBatalhas.html" class="btn-small z-depth-2" style="margin: 5px 0px 5px 0px;" style="min-width: 100%;">
+                        <a href="construcao.html" class="btn-small z-depth-2" style="margin: 5px 0px 5px 0px;" style="min-width: 100%;">
                             <b>Suas batalhas</b>
                         </a> <br>
 
-                        <a href="treinadorPerfil.html" class="btn-small z-depth-2" style="min-width: 100%;">
+                        <a href="construcao.html" class="btn-small z-depth-2" style="min-width: 100%;">
                             <b>Editar perfil</b>
                         </a>
                     </div>
@@ -94,77 +94,20 @@ endif;
                 </div>
             </div>
 
-        <!-- Pokemons -->
-            <div class="card">
-
+        <!-- Pokemon -->
+            <?php foreach(ControladorTreinador::getListaPokemon($id) as $pokemon): ?>
                 <div class="col s4">
                     <div class="card hoverable">
                         <div class="card-image">
-                            <img src="imagens/pokemon/Bulbasaur.png">
+                            <img src="<?php echo $pokemon['imagem']; ?>">
                         </div>
                         <div class="card-content center">
-                            <h5 class="light">Bulbasaur<br><b>5</b></h5>
+                            <h5 class="light"><?php echo $pokemon['nomePokemon']; ?></h5>
                         </div>
                     </div>
                 </div>
+            <?php endforeach; ?>
 
-                <div class="col s4">
-                    <div class="card hoverable">
-                        <div class="card-image">
-                            <img src="imagens/pokemon/Ivysaur.png">
-                        </div>
-                        <div class="card-content center">
-                            <h5 class="light">Ivysaur<br><b>10</b></h5>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col s4">
-                    <div class="card hoverable">
-                        <div class="card-image">
-                            <img src="imagens/pokemon/Venusaur.png">
-                        </div>
-                        <div class="card-content center">
-                            <h5 class="light">Venusaur<br><b>15</b></h5>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col s4">
-                    <div class="card hoverable">
-                        <div class="card-image">
-                            <img src="imagens/pokemon/Charmander.png">
-                        </div>
-                        <div class="card-content center">
-                            <h5 class="light">Charmander<br><b>5</b></h5>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col s4">
-                    <div class="card hoverable">
-                        <div class="card-image">
-                            <img src="imagens/pokemon/Charmeleon.png">
-                        </div>
-                        <div class="card-content center">
-                            <h5 class="light">Charmeleon<br><b>10</b></h5>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col s4">
-                    <div class="card hoverable">
-                        <div class="card-image">
-                            <img src="imagens/pokemon/Charizard.png">
-                        </div>
-                        <div class="card-content center">
-                            <h5 class="light">Charizard<br><b>15</b></h5>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            
         </div>  
     </body>
 </html>
