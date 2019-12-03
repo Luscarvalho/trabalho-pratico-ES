@@ -1,3 +1,16 @@
+<?php
+include_once '../controller/controladorTreinador.php';
+include_once '../model/Treinador.php';
+
+if (isset($_SESSION['treinadorLogado'])):
+    $id = $_SESSION['treinadorLogado'];
+    $treinador = new Treinador();
+    $treinador = ControladorTreinador::getTreinadorById($id);
+else:
+    header('Location: index.php' );
+endif;
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,7 +19,7 @@
     <!--Icones-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Materialize CSS-->
-        <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection">   
+        <link type="text/css" rel="stylesheet" href="../css/materialize.css"  media="screen,projection">   
     </head>
 
     <body>
@@ -15,7 +28,7 @@
             <div class="container" style="padding: 0 20px 0 20px;">
                 <a href="" class="brand-logo">Simulador de Batalhas Pokémon</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="logout.php" class="btn white black-text">Sair<i class="material-icons right">close</i></a></li>
+                    <li><a href="../controller/fazerLogout.php" class="btn white black-text">Sair<i class="material-icons right">close</i></a></li>
                 </ul>
             </div>
         </nav>
@@ -35,13 +48,13 @@
                 <div class="row transparent valign-wrapper">
 
                     <div class="col s2"> <!-- Imagem -->
-                        <img src="imagens/perfil/marvin.jpg" alt="" class="circle" style="max-width: 100%;">
+                        <img src="<?php echo $treinador['foto']; ?>" alt="" class="circle" style="max-width: 100%;">
                     </div>
 
                     <div class="col s7"> <!-- Nome -->
                         <blockquote>
                             <h5 class="grey-text">BEM VINDO DE VOLTA,</h5>
-                            <h4 class="bold">MARVIN!</h4>
+                            <h4 class="bold"><?php echo $treinador['treinadorNome']; ?></h4>
                         </blockquote>
                     </div>
 
@@ -66,17 +79,17 @@
             <div class="card center">
                 <div class="col s4 grey lighten-3">
                     <div class="card z-depth-0 transparent">
-                        <h5>Nível: <b>42</b></h5>
+                        <h5>Nível: <b><?php echo $treinador['nivel']; ?></b></h5>
                     </div>
                 </div>
                 <div class="col s4 grey lighten-3">
                     <div class="card z-depth-0 transparent">
-                        <h5>Vitórias: <b>84</b></h5>
+                        <h5>Vitórias: <b><?php echo $treinador['vitorias']; ?></b></h5>
                     </div>
                 </div>  
                 <div class="col s4 grey lighten-3">
                     <div class="card z-depth-0 transparent">
-                        <h5>Derrotas: <b>9</b></h5>
+                        <h5>Derrotas: <b><?php echo $treinador['derrotas']; ?></b></h5>
                     </div>
                 </div>
             </div>

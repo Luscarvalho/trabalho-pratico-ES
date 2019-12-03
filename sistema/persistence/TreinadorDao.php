@@ -34,7 +34,7 @@ class TreinadorDao {
         endif;
 
         if ($cadastrado):
-            $_SESSION['usuarioLogado'] = $this->getIdByName($treinador->getTreinadorNome());
+            $_SESSION['treinadorLogado'] = $this->getIdByName($treinador->getTreinadorNome());
             header('Location: ../view/treinadorInicio.php');
         endif;
     }
@@ -73,7 +73,31 @@ class TreinadorDao {
         $stmt->execute();
 
         $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $resultado[0]['treinadorId'];
+    }
+
+    public function getByName(String $treinadorNome) {
+        $sql = "SELECT * FROM treinador WHERE treinadorNome = '$treinadorNome'";
+
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->execute();
+
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $resultado[0];
+    }
+
+    public function readById(int $id) {
+        $sql = "SELECT * FROM treinador WHERE treinadorId = '$id'";
+
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0):
+            $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado[0];
+        else:
+            return [];
+        endif;
     }
 }
 

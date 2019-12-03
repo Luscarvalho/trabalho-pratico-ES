@@ -44,11 +44,14 @@ class controladorTreinador {
         return $tipoDao->readAll();
     }
 
-    public function getById($id) {
-        $tipoDao = new TipoDao();
-        $tipo = new Tipo();
-        $tipo = $tipoDao->readId($id)[0];
-        return $tipo;
+    public function getTreinadorById($id) {
+        $treinadorDao = new TreinadorDao();
+        return $treinadorDao->readById($id);
+    }
+
+    public function getTreinadorByName($nome) {
+        $treinadorDao = new TreinadorDao();
+        return $treinadorDao->getByName($nome);
     }
 }
 
