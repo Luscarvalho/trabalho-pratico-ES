@@ -1,8 +1,12 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Login</title>
+        <title>Cadastar</title>
     <!--Icones-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Materialize CSS-->
@@ -16,9 +20,20 @@
                 
                 <div class="input-field col s12">
                     <h3 class="light">CADASTRAR</h3>
+
+                    <?php if(isset($_SESSION['nomeExistente'])){ ?>
+                        <blockquote>
+                            <p>Esse nome já está cadastrado, tente novamente!</p>
+                        </blockquote>
+                    <?php } 
+                        if(isset($_SESSION['senhasDiferentes'])){ ?>
+                        <blockquote>
+                            <p>As senhas não são iguais</p>
+                        </blockquote>
+                    <?php } session_destroy();?>
                 </div>
-                
-                <form method="POST" action="" autocomplete="off">   
+
+                <form method="POST" action="../controller/controladorTreinador.php?btn=cadastrarTreinador" enctype="multipart/form-data" autocomplete="off">   
                 <!-- NOME -->
                     <div class="input-field col s12">
                         <i class="material-icons prefix">account_circle</i>
@@ -44,7 +59,7 @@
                     <div class="file-field input-field col s12">
                         <div class="btn teal lighten-5 black-text">
                             <span>Foto de Perfil</span>
-                            <input type="file" accept=".jpeg, .jpg, .png">
+                            <input type="file" accept=".jpeg, .jpg, .png" name="cFoto" required>
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" type="text">
@@ -54,7 +69,7 @@
                 <!-- BOTÕES -->
                     <div class="file-field input-field col s12">
                         <button type="submit" class="btn red waves-effect white-text"> Continuar </button>
-                        <a href="index.html" class="btn-flat black-text waves-effect"> Cancelar </a>
+                        <a href="index.php" class="btn-flat black-text waves-effect"> Cancelar </a>
                     </div>
                 </form>
                 
@@ -63,6 +78,6 @@
         </div>
 
     <!--Materialize JS-->
-        <script type="text/javascript" src="js/materialize.js"></script>
+        <script type="text/javascript" src="../js/materialize.js"></script>
     </body>
 </html>

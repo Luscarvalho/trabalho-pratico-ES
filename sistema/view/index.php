@@ -13,7 +13,7 @@ session_start();
         <link type="text/css" rel="stylesheet" href="../css/materialize.css"  media="screen,projection">
     </head>
 
-    <body style="background-image: url(imagens/fundo-login.jpg); background-size: cover;">
+    <body style="background-image: url(../imagens/fundo-login.jpg); background-size: cover;">
         
         <div class="valign-wrapper row" style="position: relative; min-height: 100vh;">
             <div class="card z-depth-3 container col s4 pull-s4" style="padding: 0px 20px 0px 20px; border-radius:0px;">
@@ -38,7 +38,7 @@ session_start();
                     <input type="text" placeholder="Usuário" name="cUsuario" required> <br>
                     <input type="password" placeholder="Senha" name="cSenha" required> <br><br>
                     <button type="submit" class="btn waves-effect"> Entrar </button>
-                    <a href="cadastrarDadosPessoais.html" class="waves-effect waves-gray btn-flat">Cadastrar</a>
+                    <a href="formularioNovoTreinador.php" class="waves-effect waves-gray btn-flat">Cadastrar</a>
                 </form>
                 
                 <br>
