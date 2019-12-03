@@ -1,7 +1,9 @@
 <?php 
 session_start();
-include_once '../persistence/TreinadorDao.php';
 include_once '../model/Treinador.php';
+include_once '../persistence/TreinadorDao.php';
+include_once '../persistence/Treinador_pokemonDao.php';
+include_once '../persistence/PokemonDao.php';
 
 class controladorTreinador {
     public function criarTreinador() {
@@ -32,7 +34,6 @@ class controladorTreinador {
             $treinador->setVitorias(0);
             $treinador->setDerrotas(0);
             $treinador->setNivel(0);
-             
         endif;
         
         //Salvar no BD
@@ -53,27 +54,44 @@ class controladorTreinador {
         $treinadorDao = new TreinadorDao();
         return $treinadorDao->getByName($nome);
     }
+
+    public function addPokemon() {
+        $relacao = new Treinador_pokemonDao();
+        $treinador = $_SESSION['treinadorLogado'];
+
+        $p1 = $_POST['cPokemon1'];
+        $p2 = $_POST['cPokemon2'];
+        $p3 = $_POST['cPokemon3'];
+        $p4 = $_POST['cPokemon4'];
+        $p5 = $_POST['cPokemon5'];
+        $p6 = $_POST['cPokemon6'];
+        
+        $listaNomePokemon = array($p1, $p2, $p3, $p4, $p5, $p6);
+        $listaIdPokemon = array();
+
+        $pokemonDao = new PokemonDao();
+        foreach($listaNomePokemon as $nomePokemon):
+            array_push($listaIdPokemon, $pokemonDao->readName($nomePokemon)['pokemonId']);
+        endforeach;
+        
+        $relacao->create($treinador, $listaIdPokemon);
+    }
 }
 
 
-//Seleciona qual função irá ser usada
-if(isset($_GET['btn'])) {
+//Seleciona qual metodo irá ser usado
+if(isset($_GET['btn'])):
     switch ($_GET['btn']) {
         case "cadastrarTreinador":
             $ControladorTreinador = new ControladorTreinador();
             $ControladorTreinador->criarTreinador($_POST);
         break;
-            
-        case "removerTipo":
-            $ControladorTipo = new ControladorTipo();
-            $ControladorTipo->removerTipo($_POST);
-        break;
 
-        case "editarTipo";
-            $ControladorTipo = new ControladorTipo();
-            $ControladorTipo->editarTipo($_POST);
+        case "addPokemon":
+            $ControladorTreinador = new controladorTreinador();
+            $ControladorTreinador->addPokemon($_POST);
         break;
     }
-}
+endif;
 
 ?>

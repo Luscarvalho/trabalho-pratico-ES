@@ -33,9 +33,6 @@ class ControladorPokemon {
         $pokemonDao->create($pokemon);
     }
 
-    public function editarPokemon() {
-    }
-
     public function listarPokemon() {
         $pokemonDao = new PokemonDao();
         return $pokemonDao->readAll();
@@ -51,6 +48,11 @@ class ControladorPokemon {
     public function getTipoById($id) {
         $tipoDao = new TipoDao();
         return $tipoDao->readId($id);
+    }
+
+    public function getById($id) {
+        $pokemonDao = new PokemonDao;
+        return $pokemonDao->readId($id);
     }
 }
 

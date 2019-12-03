@@ -39,13 +39,36 @@ class PokemonDao {
         endif;
     }
 
-    public function readName(String $pokemonNome) {
-    }
-
     public function readId($pokemonId) {
+        $sql = 'SELECT * FROM pokemon WHERE pokemonId=?';
+
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->bindValue(1, $pokemonId);
+        
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0):
+            $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado[0];
+        else:
+            return[];
+        endif;
     }
 
-    public function update(Pokemon $pokemon) {
+    public function readName($pokemonNome) {
+        $sql = 'SELECT * FROM pokemon WHERE nomePokemon=?';
+
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->bindValue(1, $pokemonNome);
+        
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0):
+            $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado[0];
+        else:
+            return[];
+        endif;
     }
 
     public function delete(int $id) {

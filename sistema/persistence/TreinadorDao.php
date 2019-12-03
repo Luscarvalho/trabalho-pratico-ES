@@ -35,7 +35,7 @@ class TreinadorDao {
 
         if ($cadastrado):
             $_SESSION['treinadorLogado'] = $this->getIdByName($treinador->getTreinadorNome());
-            header('Location: ../view/treinadorInicio.php');
+            header('Location: ../view/formularioEscolherPokemon.php');
         endif;
     }
 

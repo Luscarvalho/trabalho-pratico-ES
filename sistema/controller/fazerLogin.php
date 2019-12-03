@@ -15,7 +15,7 @@ else:
         $_SESSION['treinadorLogado'] = $treinador['treinadorId'];
         header('Location: ../view/treinadorInicio.php');
     else:
-        $_SESSION['naoAutenticado'] = true;
+        $_SESSION['naoAutenticado'] = $treinador['treinadorId'];
         header('Location: ../view/index.php');
     endif;
 endif;
