@@ -70,7 +70,7 @@ class ControladorTipo {
     public function getById($id) {
         $tipoDao = new TipoDao();
         $tipo = new Tipo();
-        $tipo = $tipoDao->readId($id)[0];
+        $tipo = $tipoDao->readId($id);
         return $tipo;
     }
 }

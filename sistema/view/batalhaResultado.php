@@ -1,3 +1,11 @@
+<?php
+include_once '../controller/controladorTreinador.php';
+
+$vencedor = controladorTreinador::getTreinadorById($_SESSION['ganhadorId']);
+$treinador = controladorTreinador::getTreinadorById($_SESSION['treinadorLogado']);
+$oponente = controladorTreinador::getTreinadorById($_SESSION['oponente']);
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,8 +38,8 @@
         <!-- Vencedor -->
             <div class="card-panel row">
                 <div class="container center">
-                    <img src="imagens/perfil/marvin.jpg" style="max-width: 50%" class="circle responsive-img">
-                    <h2>Marvin</h2>
+                    <img src="<?php echo $vencedor['foto']; ?>" style="max-width: 50%" class="circle responsive-img">
+                    <h2><?php echo $vencedor['treinadorNome']; ?></h2>
                     <br>
                     <hr>
                 </div>
@@ -41,19 +49,19 @@
                     <h4>Novos Dados:</h4>
                 </blockquote>
                 <div class="container col s6 center">
-                    <h5 class="grey-text">Marvin</h5>
+                    <h5 class="grey-text"><?php echo $treinador['treinadorNome']; ?></h5>
                     <br>
-                    <p>Nível: <b>42</b></p>
-                    <p>Vitórias: <b>85</b></p>
-                    <p>Derrotas: <b>9</b></p>
+                    <p>Nível: <b><?php echo $treinador['nivel']; ?></b></p>
+                    <p>Vitórias: <b><?php echo $treinador['vitorias']; ?></b></p>
+                    <p>Derrotas: <b><?php echo $treinador['derrotas']; ?></b></p>
                 </div>
                 
                 <div class="container col s6 center">
-                    <h5 class="grey-text">Enzo</h5>
+                    <h5 class="grey-text"><?php echo $oponente['treinadorNome']; ?></h5>
                     <br>
-                    <p>Nível: <b>1</b></p>
-                    <p>Vitórias: <b>3</b></p>
-                    <p>Derrotas: <b>3</b></p>
+                    <p>Nível: <b><?php echo $oponente['nivel']; ?></b></p>
+                    <p>Vitórias: <b><?php echo $oponente['vitorias']; ?></b></p>
+                    <p>Derrotas: <b><?php echo $oponente['derrotas']; ?></b></p>
                 </div>
             </div>
         </div>

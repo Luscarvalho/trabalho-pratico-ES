@@ -99,6 +99,29 @@ class TreinadorDao {
             return [];
         endif;
     }
+
+    public function update(Treinador $treinador) {
+        $sql = 'UPDATE treinador SET vitorias=?, derrotas=?, nivel=? WHERE treinadorId=?';
+
+        $vitorias = $treinador->getVitorias();
+        $derrotas = $treinador->getDerrotas();
+        $nivel = $treinador->getNivel();
+        $id = $treinador->getTreinadorId();
+
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->bindValue(1, $vitorias);
+        $stmt->bindValue(2, $derrotas);
+        $stmt->bindValue(3, $nivel);
+        $stmt->bindValue(4, $id);
+
+        if ($stmt->execute()) {
+            if ($stmt->rowCount() > 0) {
+                header('Location: ../view/batalhaResultado.php');
+            } else {
+                echo "Erro ao tentar efetivar a atualização";
+            }
+        } 
+    }
 }
 
 ?>

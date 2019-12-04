@@ -97,6 +97,35 @@ class controladorTreinador {
 
         return $listaPokemon;
     }
+
+    public function atualizarDados($treinadorId, $batalha) {
+        $treinadorDao = new TreinadorDao;
+        $treinador = new Treinador();
+        $treinadorBD = $this->getTreinadorById($treinadorId);
+        $nivel = 0;
+
+        $treinador->setTreinadorId($treinadorBD['treinadorId']);
+
+        if($batalha == "vitoria"):
+            $treinador->setVitorias($treinadorBD['vitorias'] + 1);
+            $treinador->setDerrotas($treinadorBD['derrotas']);
+        elseif($batalha == "derrota"):
+            $treinador->setDerrotas($treinadorBD['derrotas'] + 1);
+            $treinador->setVitorias($treinadorBD['vitorias']);
+        endif;
+
+        $nivel = $treinador->getVitorias() - $treinador->getDerrotas();
+
+        if($nivel < 0):
+            $nivel = 0;
+        else:
+            $nivel = $nivel / 3;
+        endif;
+
+        $treinador->setNivel($nivel);
+
+        $treinadorDao->update($treinador);
+    }
 }
 
 
