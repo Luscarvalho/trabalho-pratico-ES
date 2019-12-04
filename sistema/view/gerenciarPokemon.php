@@ -20,7 +20,7 @@ include_once '../controller/controladorPokemon.php';
                 <a href="enfermeiraJoy.html" class="brand-logo">Simulador de Batalhas Pokémon</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="enfermeiraJoy.html">Voltar</a></li>
-                    <li><a href="index.html" class="btn white black-text">Sair<i class="material-icons right">close</i></a></li>
+                    <li><a href="index.php" class="btn white black-text">Sair<i class="material-icons right">close</i></a></li>
                 </ul>
             </div>
         </nav>
@@ -59,7 +59,7 @@ include_once '../controller/controladorPokemon.php';
                     ?>
                     <tr>
                         <td><?php echo $pokemon['nomePokemon']; ?></td>
-                        <td><?php echo ControladorPokemon::getTipoById($pokemon['tipoId'])[0]['tipoNome']; ?></td>
+                        <td><?php echo ControladorPokemon::getTipoById($pokemon['tipoId'])['tipoNome']; ?></td>
                         <td><a href="#remover<?php echo $pokemon['pokemonId'];?>" class="btn-floating red modal-trigger"><i class="material-icons right">delete</i></a></td>
 
                     <!-- Caixa de dialogo -->

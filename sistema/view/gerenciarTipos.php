@@ -26,7 +26,7 @@ include_once '../controller/controladorTipo.php';
                 <a href="enfermeiraJoy.html" class="brand-logo">Simulador de Batalhas Pokémon</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="enfermeiraJoy.html">Voltar</a></li>
-                    <li><a href="index.html" class="btn white black-text">Sair<i class="material-icons right">close</i></a></li>
+                    <li><a href="index.php" class="btn white black-text">Sair<i class="material-icons right">close</i></a></li>
                 </ul>
             </div>
         </nav>

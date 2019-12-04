@@ -23,8 +23,8 @@ class ControladorBatalha {
         $desvantagemP1 = $this->calcularDesvantagem($tipo1, $tipo2);
         $desvantagemP2 = $this->calcularDesvantagem($tipo2, $tipo1);
         
-        $vantagemT1 = ($t1['nivel'] + 1) * 1.0001;
-        $vantagemT2 = ($t2['nivel'] + 1) * 1.0001;
+        $vantagemT1 = 1 + ($t1['nivel'] / 10);
+        $vantagemT2 = 1 + ($t2['nivel'] / 10);
 
         $ataqueP1 = $vantagemP1 * $desvantagemP1 * $vantagemT1;
         $ataqueP2 = $vantagemP2 * $desvantagemP2 * $vantagemT2;
@@ -36,7 +36,7 @@ class ControladorBatalha {
             $_SESSION['ganhador'] = "Treinador";
             $_SESSION['ganhadorId'] = $_SESSION['treinadorLogado'];
         endif;
-
+        
         $this->atualizarTreinadores();
         $this->cadastrarBatalha();
     }
@@ -46,7 +46,7 @@ class ControladorBatalha {
         $tipoP2 = TipoDao::readId($p2);
 
         if($tipoP1['forca'] == $tipoP2['tipoNome']):
-            return 1.25;
+            return 1.5;
         else:
             return 1;
         endif;
@@ -57,7 +57,7 @@ class ControladorBatalha {
         $tipoP2 = TipoDao::readId($tipo2);
 
         if($tipoP1['fraqueza'] == $tipoP2['tipoNome']):
-            return 0.95;
+            return 0.5;
         else:
             return 1;
         endif;
