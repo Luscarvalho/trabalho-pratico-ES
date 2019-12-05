@@ -17,7 +17,7 @@ https://docs.google.com/spreadsheets/d/1FQvOTPGXo6NEMVj79Aovx7LCH5Q4Tsr-ycxp82Z3
 
 - [x] Fase 0
 - [x] Fase 1
-- [ ] Fase 2
+- [x] Fase 2
 - [ ] Fase 3
 
 
