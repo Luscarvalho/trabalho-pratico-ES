@@ -39,6 +39,20 @@ class PokemonDao {
         endif;
     }
 
+    public function pokemonValido(String $nome) {
+        $sql = "SELECT * FROM pokemon WHERE nomePokemon = '$nome'";
+
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0):
+            return true;
+        else:
+            return false;
+        endif;
+    }
+
+
     public function readId($pokemonId) {
         $sql = 'SELECT * FROM pokemon WHERE pokemonId=?';
 

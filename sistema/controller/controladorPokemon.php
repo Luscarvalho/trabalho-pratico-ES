@@ -27,10 +27,9 @@ class ControladorPokemon {
             $pokemon->setImagem($imagem);
             $pokemon->setTipoId($tipo);
 
+            //Salvar no BD
+            $pokemonDao->create($pokemon);
         endif;
-        
-        //Salvar no BD
-        $pokemonDao->create($pokemon);
     }
 
     public function listarPokemon() {
