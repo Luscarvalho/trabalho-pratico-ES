@@ -28,10 +28,10 @@ class ControladorTipo {
             $tipo->setForca($forca);
             $tipo->setFraqueza($fraqueza);
             $tipo->setImagem($imagem);
+            
+            //Salvar no BD
+            $tipoDao->create($tipo);
         endif;
-        
-        //Salvar no BD
-        $tipoDao->create($tipo);
     }
 
     public function editarTipo() {

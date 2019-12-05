@@ -71,7 +71,12 @@ class controladorTreinador {
 
         $pokemonDao = new PokemonDao();
         foreach($listaNomePokemon as $nomePokemon):
-            array_push($listaIdPokemon, $pokemonDao->readName($nomePokemon)['pokemonId']);
+            if($pokemonDao->pokemonValido($nomePokemon)):
+                array_push($listaIdPokemon, $pokemonDao->readName($nomePokemon)['pokemonId']);
+            else:
+                $_SESSION['pokemonInvalido'] = true;
+                header('Location: ../view/formularioEscolherPokemon.php');
+            endif;
         endforeach;
         
         $relacao->create($treinador, $listaIdPokemon);

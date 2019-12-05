@@ -31,6 +31,15 @@ include_once '../controller/controladorPokemon.php'
                         <option value="<?php echo $pokemon['nomePokemon']?>"></option>
                     <?php endforeach; ?>
                 </datalist>
+            
+            <!-- ERRO DE POKÉMON INVÁLIDO -->
+                <?php if(isset($_SESSION['pokemonInvalido'])): ?>
+                    <div class="container">
+                        <blockquote>
+                        Pokémon inválido<br>
+                        </blockquote>
+                    </div>
+                <?php endif; ?>
 
             <!-- POKEMON 1 -->
                 <div class="input-field col s12">

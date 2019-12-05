@@ -40,16 +40,23 @@ Materialize | 1.0.0
 
 ## Proposta do sistema:
 O sistema tem como finalidade implementar um simulador de batalhas Pokémon. Para isso os treinadores deverão estar cadastrado dentro do banco de dados do sitema, juntamente com os pokémon. As simulações são feitas apartir de calculos, levando em conta o nível do treinador e o tipo do pokémon.
+Ao batalhar, o treinador deve escolher um oponente e os pokemons que irão batalhar. Durante a batalha, o sistema, faz a leitura dos dados do treinador e do pokemon para atribuir os pontos da batalha, ganha quem tiver a maior pontuação. Após a batalha, o sistema atualiza os dados do pokémon e do treinador. Para finalizar, a batalha é salva no banco de dados para consultas posteriores.
 
 ### Tabelas:
 Treinador <br>
-(__ID__, nomeTreinador, nivel, pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6, vitorias, derrotas)
+(__TreinadorID__, nomeTreinador, senha, foto, vitorias, derrotas, nivel)
+
+Treinador_pokemon<br>
+(__TreinadorId__, pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6)
 
 Pokemon <br>
-(__nomePokemon__, tipo)
+(__pokemonId__, nomePokemon, imagem, tipoId)
 
 Tipo <br>
-(__tipo__, forca, fraqueza)
+(__tipoId__, tipoNome, forca,fraqueza, imagem)
+
+PokemonNivel<br>
+(__treinadorId__, pokemonId, vitorias, derrotas, nivel)
 
 Batalha <br>
 (__numBatalha__, treinador1, treinador2, ganhador)
