@@ -23,6 +23,52 @@ class BatalhaDao {
             }
         } 
     }
+
+    public function readAll() {
+        $sql = 'SELECT * FROM batalha';
+        
+        $stmt = Conexao::getConn()->prepare($sql);
+
+        if ($stmt->execute()) {
+            if ($stmt->rowCount() > 0) {
+                $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $resultado;
+            } else {
+                return [];
+            }
+        } 
+    }
+
+    public function getById($id) {
+        $sql = 'SELECT * FROM batalha WHERE batalhaId=?';
+        
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->bindParam(1, $id);
+
+        if ($stmt->execute()) {
+            if ($stmt->rowCount() > 0) {
+                $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $resultado[0];
+            } else {
+                echo "Erro ao listar batalhas";
+            }
+        } 
+    }
+
+    public function delete($id) {
+        $sql = 'DELETE FROM batalha WHERE batalhaId=?';
+        
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->bindParam(1, $id);
+
+        if ($stmt->execute()) {
+            if ($stmt->rowCount() > 0) {
+                header('Location: ../view/gerenciarBatalhas.php');
+            } else {
+                echo "Erro ao tentar remover";
+            }
+        }
+    }
 }
 
 ?>

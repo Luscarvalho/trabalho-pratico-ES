@@ -131,8 +131,51 @@ class controladorTreinador {
 
         $treinadorDao->update($treinador);
     }
-}
 
+    public function reduzirVitorias($treinadorId) {
+        $treinadorDao = new TreinadorDao;
+        $treinador = new Treinador();
+        $treinadorBD = $treinadorDao->readById($treinadorId);
+        $nivel = 0;
+        $treinador->setTreinadorId($treinadorId);
+        $treinador->setVitorias($treinadorBD['vitorias'] - 1);
+        $treinador->setDerrotas($treinadorBD['derrotas']);
+        
+        $nivel = $treinador->getVitorias() - $treinador->getDerrotas();
+
+        if($nivel < 0):
+            $nivel = 0;
+        else:
+            $nivel = $nivel / 3;
+        endif;
+
+        $treinador->setNivel($nivel);
+
+        $treinadorDao->update($treinador);
+    }
+    
+    public function reduzirDerrotas($treinadorId) {
+        $treinadorDao = new TreinadorDao;
+        $treinador = new Treinador();
+        $treinadorBD = $treinadorDao->readById($treinadorId);
+        $nivel = 0;
+        $treinador->setTreinadorId($treinadorId);
+        $treinador->setVitorias($treinadorBD['vitorias']);
+        $treinador->setDerrotas($treinadorBD['derrotas'] - 1);
+        
+        $nivel = $treinador->getVitorias() - $treinador->getDerrotas();
+
+        if($nivel < 0):
+            $nivel = 0;
+        else:
+            $nivel = $nivel / 3;
+        endif;
+
+        $treinador->setNivel($nivel);
+
+        $treinadorDao->update($treinador);
+    }
+}
 
 //Seleciona qual metodo irá ser usado
 if(isset($_GET['btn'])):

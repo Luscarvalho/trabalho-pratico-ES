@@ -1,5 +1,5 @@
 <?php
-include_once '../Sistema/controller/controladorBatalha.php';
+include_once '../controller/controladorBatalha.php';
 
 class TestControladorBatalha extends PHPUnit\Framework\TestCase{
     public function testGetTreinadorById() {
@@ -7,5 +7,4 @@ class TestControladorBatalha extends PHPUnit\Framework\TestCase{
         $this->assertEquals(1.5, $controladorBatalha->calcularVantagem(47, 44));
     }
 }
-
 ?>

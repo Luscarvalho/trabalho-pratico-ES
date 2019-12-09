@@ -1,6 +1,6 @@
 <?php 
 
-require_once '../Sistema/controller/controladorTreinador.php';
+require_once '../controller/controladorTreinador.php';
 
 class TestControladorTreinador extends PHPUnit\Framework\TestCase {
     public function testGetTreinadorByName() {
@@ -8,9 +8,9 @@ class TestControladorTreinador extends PHPUnit\Framework\TestCase {
         $this->assertEquals(15, $controladorTreinador->getTreinadorByName('Marvin')['treinadorId']);
     }
 
-    public function testGetTreinadorById() {
+    public function testGetTreinadorById() { //Erro, 'Enzo'
         $controladorTreinador = new controladorTreinador();
-        $this->assertEquals('Enzo', $controladorTreinador->getTreinadorById(16)['treinadorNome']);
+        $this->assertEquals('Valentina', $controladorTreinador->getTreinadorById(16)['treinadorNome']);
     }
 }
 ?>

@@ -91,6 +91,36 @@ class ControladorBatalha {
 
         $batalhaDao->create($batalha);
     }
+
+    public function listarBatalhas() {
+        $batalhaDao = new BatalhaDao();
+        return $batalhaDao->readAll();
+    }
+
+    public function remover() {
+        $batalha = $this->getBatalha($_GET['id']);
+        $batalhaDao = new BatalhaDao();
+
+        $treinadorControle = new controladorTreinador();
+        $treinador = $treinadorControle->getTreinadorById($batalha['treinador1']);
+        $oponente = $treinadorControle->getTreinadorById($batalha['treinador2']);
+        $vencedor = $treinadorControle->getTreinadorById($batalha['vencedor']);
+
+        if($treinador['treinadorId'] == $vencedor['treinadorId']):
+            $treinadorControle->reduzirVitorias($treinador['treinadorId']);
+            $treinadorControle->reduzirDerrotas($oponente['treinadorId']);
+        else:
+            $treinadorControle->reduzirVitorias($oponente['treinadorId']);
+            $treinadorControle->reduzirDerrotas($treinador['treinadorId']);
+        endif;
+
+        return $batalhaDao->delete($_GET['id']);
+    }
+
+    public function getBatalha($id) {
+        $batalhaDao = new BatalhaDao();
+        return $batalhaDao->getById($id);
+    }
 }
 
 if(isset($_GET['btn'])):
@@ -98,6 +128,10 @@ if(isset($_GET['btn'])):
         case "batalhar":
             $ControladorBatalha = new ControladorBatalha();
             $ControladorBatalha->batalhar($_POST);
+        break;
+        case "removerBatalha":
+            $ControladorBatalha = new ControladorBatalha();
+            $ControladorBatalha->remover($_POST);
         break;
     }
 endif;
