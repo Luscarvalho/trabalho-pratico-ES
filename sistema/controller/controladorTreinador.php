@@ -133,6 +133,7 @@ class controladorTreinador {
     }
 
     public function reduzirVitorias($treinadorId) {
+        
         $treinadorDao = new TreinadorDao;
         $treinador = new Treinador();
         $treinadorBD = $treinadorDao->readById($treinadorId);

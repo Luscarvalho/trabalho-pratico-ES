@@ -48,7 +48,8 @@ include_once '../controller/controladorTreinador.php';
                     <tr>
                         <th>Treinador</th>
                         <th>Oponente</th>
-                        <th>Ganhador</th>
+                        <th>Vencedor</th>
+                        <th>Alterar<br>Vencedor</th>
                         <th>Remover</th>
                     </tr>
                 </thead>
@@ -71,10 +72,15 @@ include_once '../controller/controladorTreinador.php';
                         <td>
                             <img src="<?php echo $vencedor['foto']; ?>" class="circle" style="max-width: 50px;">
                         </td>
-                        <td><a href="#remover<?php echo $batalha['batalhaId'];?>" class="btn-floating red modal-trigger"><i class="material-icons right">delete</i></a></td>
+                        <td>
+                            <a href="#atualizar<?php echo $batalha['batalhaId'];?>" class="btn-floating red modal-trigger"><i class="material-icons right teal">autorenew</i></a>
+                        </td>
+                        <td>
+                            <a href="#remover<?php echo $batalha['batalhaId'];?>" class="btn-floating red modal-trigger"><i class="material-icons right">delete</i></a>
+                        </td>
 
-                    <!-- Caixa de dialogo -->
-                        <div id="remover<?php echo $batalha['batalhaId'];?>" class="modal">
+                    <!-- Caixa de dialogo remover-->
+                    <div id="remover<?php echo $batalha['batalhaId'];?>" class="modal">
                             <div class="modal-content">
                                 <blockquote>
                                     <h4>Remover</h4>
@@ -83,6 +89,20 @@ include_once '../controller/controladorTreinador.php';
                             </div>
                             <div class="modal-footer">
                                 <a href="../controller/controladorBatalha.php?id=<?php echo $batalha['batalhaId'];?>&btn=removerBatalha" class="modal-action modal-close waves-effect btn red">Remover</a>
+                                <a href="" class="modal-action modal-close waves-effect btn-flat">Cancelar</a>
+                            </div>
+                        </div>
+
+                    <!-- Caixa de dialogo atualizar-->
+                        <div id="atualizar<?php echo $batalha['batalhaId'];?>" class="modal">
+                            <div class="modal-content">
+                                <blockquote>
+                                    <h4>Alterar vencedor</h4>
+                                </blockquote>
+                                <h5>Tem certeza que deseja alterar o vencedor?</h5>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="../controller/controladorBatalha.php?id=<?php echo $batalha['batalhaId'];?>&btn=atualizarBatalha" class="modal-action modal-close waves-effect btn red">Alterar</a>
                                 <a href="" class="modal-action modal-close waves-effect btn-flat">Cancelar</a>
                             </div>
                         </div>

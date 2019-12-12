@@ -47,18 +47,21 @@ endif;
             <div class="card row transparent z-depth-0">
                 <div class="row transparent valign-wrapper">
 
-                    <div class="col s2"> <!-- Imagem -->
+                <!-- Imagem -->
+                    <div class="col s2">
                         <img src="<?php echo $treinador['foto']; ?>" class="circle" style="max-width: 100%;">
                     </div>
 
-                    <div class="col s7"> <!-- Nome -->
+                <!-- Nome -->
+                    <div class="col s7">
                         <blockquote>
                             <h5 class="grey-text">BEM VINDO DE VOLTA,</h5>
                             <h4 class="bold"><?php echo $treinador['treinadorNome']; ?></h4>
                         </blockquote>
                     </div>
 
-                    <div class="col3 center"> <!-- Botoes -->
+                <!-- Botoes -->
+                    <div class="col3 center">
                         <a href="batalhaOponente.php" class="btn-small pulse z-depth-1 orange" style="min-width: 100%;">
                             <b>Batalhar</b>
                         </a> <br>

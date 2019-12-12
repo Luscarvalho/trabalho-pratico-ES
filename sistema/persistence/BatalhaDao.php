@@ -69,6 +69,22 @@ class BatalhaDao {
             }
         }
     }
+
+    public function update($vencedor, $batalha) {
+        $sql = 'UPDATE batalha SET vencedor=? WHERE batalhaId=?';
+        
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->bindValue(1, $vencedor);
+        $stmt->bindValue(2, $batalha);
+
+        if ($stmt->execute()) {
+            if ($stmt->rowCount() > 0) {
+                header('Location: ../view/gerenciarBatalhas.php');
+            } else {
+                echo "Erro ao tentar efetivar a atualização";
+            }
+        }
+    }
 }
 
 ?>

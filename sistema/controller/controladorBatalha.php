@@ -121,6 +121,24 @@ class ControladorBatalha {
         $batalhaDao = new BatalhaDao();
         return $batalhaDao->getById($id);
     }
+
+    public function alterarVencedor() {
+        $batalha = $this->getBatalha($_GET['id']);
+        
+        $treinadorId = $batalha['treinador1'];
+        $oponenteId = $batalha['treinador2'];
+        $vencedorId = $batalha['vencedor'];
+
+        if($vencedorId == $treinadorId) {
+            $_SESSION['ganhador'] = "Oponente";
+            $_SESSION['ganhadorId'] = $oponenteId;
+        } else { 
+            $_SESSION['ganhador'] = "Treinador";
+            $_SESSION['ganhadorId'] = $treinadorId;   
+        }
+ 
+        BatalhaDao::update($_SESSION['ganhadorId'], $_GET['id']);
+    }
 }
 
 if(isset($_GET['btn'])):
@@ -133,6 +151,9 @@ if(isset($_GET['btn'])):
             $ControladorBatalha = new ControladorBatalha();
             $ControladorBatalha->remover($_POST);
         break;
+        case "atualizarBatalha":
+            $ControladorBatalha = new ControladorBatalha();
+            $ControladorBatalha->alterarVencedor($_POST);
     }
 endif;
 ?>
